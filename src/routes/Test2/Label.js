@@ -17,11 +17,11 @@ const cssLabel = css({
   }
 })
 
-const Label = () => {
+const Label = ({input, onClear}) => {
   return (
     <span className={cssLabel}>
-      RENDER VALUE HERE
-      <button type="button">⊗</button>
+      {input}
+      <button onClick={()=>onClear && onClear()} type="button">⊗</button>
     </span>
   )
 }
