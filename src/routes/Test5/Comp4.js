@@ -1,17 +1,26 @@
-import { cssWrapper, cssModalRight } from './style';
+import { useContext } from "react";
+import { ModalContext } from "./Comp3";
+import { cssWrapper, cssModalRight } from "./style";
 
 const Comp4 = (/* NO PROPS ALLOWED */) => {
-  return(
+  const { setShow } = useContext(ModalContext);
+  return (
     <>
       <div className={cssWrapper}>
         <div className={cssModalRight}>
           Input Modal
-          <button type="button">⊗</button>
+          <button onClick={() => setShow(false)} type="button">
+            ⊗
+          </button>
         </div>
-        <input id="mynumber2" type="text" placeholder="input mynumber2"></input>
+        <input
+          id="mynumber2"
+          type="number"
+          placeholder="input mynumber2"
+        ></input>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Comp4;
