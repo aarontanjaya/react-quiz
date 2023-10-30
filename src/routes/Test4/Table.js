@@ -1,6 +1,6 @@
 // import DATA from "./_data";
-
-const Table = () => {
+import Row from "./Row";
+const Table = ({data, filterFunc, query}) => {
   return (
     <table>
       <thead>
@@ -9,6 +9,10 @@ const Table = () => {
           <th>Age</th>
           <th>Address</th>
         </tr>
+        {data && data.map((item,idx)=>
+          (!filterFunc || (filterFunc && filterFunc(query, item))  ?
+            <Row key={`${item.name}+${idx}`} name={item.name} age={item.age} address={item.address} /> : null)
+        )}
       </thead>
     </table>
   )
