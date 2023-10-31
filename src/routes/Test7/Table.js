@@ -1,6 +1,13 @@
 import DATA from "./_data";
-
-const Table = () => {
+import { useEffect, useState } from "react";
+const Table = ({filterFunc, init }) => {
+  const [query, setQuery] = useState("")
+  useEffect(()=>{
+    init(query, setQuery)
+  },[])
+  useEffect(()=>{
+    console.log('tesa')
+  }, [query])
   return (
     <table>
       <thead>
@@ -11,16 +18,18 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {DATA.map((eachrow, idx) => (
-          <tr key={idx}>
-            <td>{eachrow.name}</td>
-            <td>{eachrow.age}</td>
-            <td>{eachrow.address}</td>
-          </tr>
-        ))}
+        {DATA.map((eachrow, idx) =>
+          !filterFunc || (filterFunc && filterFunc(query, eachrow)) ? (
+            <tr key={idx}>
+              <td>{eachrow.name}</td>
+              <td>{eachrow.age}</td>
+              <td>{eachrow.address}</td>
+            </tr>
+          ) : null
+        )}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
 export default Table;
