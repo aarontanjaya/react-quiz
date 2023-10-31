@@ -10,7 +10,7 @@ const Test1 = () => {
         <li>Please render the inputted value</li>
       </ul>
       <p>
-        <b>User Input: </b> <p>{formatInput(value)}</p>
+        <b>User Input: <span>{formatInput(value)}</span></b> 
       </p>
       <input onChange={(e)=>setValue(e.target.value)} type="text" placeholder="input here"/>
     </div>
