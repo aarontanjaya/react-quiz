@@ -1,15 +1,15 @@
-import { cssModal } from "./style"
+import { cssModal } from "./style";
 
-const Modal = () => {
+const Modal = ({ onReset, data }) => {
   return (
     <div className={cssModal}>
-      Name: _____
-      <br/>
-      Age: _____
-      <br/>
-      Address: _____
-      <br/>
-      <button>Reset</button>
+      {`Name:${data.get("name") ? data.get("name") : "_____"}`}
+      <br />
+      {`Age:${data.get("age") ? data.get("age") : "_____"}`}
+      <br />
+      {`Address:${data.get("address") ? data.get("address") : "_____"}`}
+      <br />
+      <button onClick={() => onReset()}>Reset</button>
     </div>
   );
 };

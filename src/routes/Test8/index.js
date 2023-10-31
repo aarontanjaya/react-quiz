@@ -1,11 +1,25 @@
+import { useRef, useState } from 'react';
 import Modal from './Modal';
 import { cssForm } from './style';
 
 const Test8 = () => {
+  const formRef = useRef(0)
+  const [fields, setFields] = useState(new FormData())
+  const [showModal, setShowModal] = useState(false)
   // ONLY ONE HANDLE METHOD ALLOWED
-  const handleInput = () => {
+  const handleInput = (e) => {
     //...
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    setFields(formData)
+    setShowModal(true)
   };
+
+  const handleReset = ()=>{
+    formRef.current.reset()
+    setFields(new FormData(formRef.current))
+    setShowModal(false)
+  }
 
   return(
     <div>
@@ -15,14 +29,14 @@ const Test8 = () => {
         <li>Show the form value inside the modal</li>
         <li>Reset the form and close the modal when user click the reset button</li>
       </ul>
-      <form className={cssForm}>
-        <input type="text" placeholder="name" onChange={handleInput}/>
-        <input type="text" placeholder="age" onChange={handleInput}/>
-        <textarea type="text" placeholder="address" onChange={handleInput}/>
-        <button>Submit</button>
+      <form ref={formRef} onxwSubmit={handleInput} className={cssForm}>
+        <input name="name" type="text" placeholder="name"/>
+        <input name="age" type="text" placeholder="age"/>
+        <textarea name="address" type="text" placeholder="address"/>
+        <button type="submit">Submit</button>
       </form>
       {/* Only Show the modal when user clicked submit */}
-      <Modal />
+      {showModal && <Modal onReset={handleReset} data={fields}/>}
     </div>
   )
 }
