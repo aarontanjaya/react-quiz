@@ -29,7 +29,7 @@ const Test8 = () => {
         <li>Show the form value inside the modal</li>
         <li>Reset the form and close the modal when user click the reset button</li>
       </ul>
-      <form ref={formRef} onxwSubmit={handleInput} className={cssForm}>
+      <form ref={formRef} onSubmit={handleInput} className={cssForm}>
         <input name="name" type="text" placeholder="name"/>
         <input name="age" type="text" placeholder="age"/>
         <textarea name="address" type="text" placeholder="address"/>
