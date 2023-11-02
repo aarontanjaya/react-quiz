@@ -4,9 +4,16 @@ const cssLabel = css({
   display: 'inline-block',
   margin: '4px 0px',
   padding: '2px 8px',
+  minHeight: 26,
   backgroundColor: '#e0e0e0',
   borderRadius: 8,
+  ":hover" :{
+    button: {
+      display: 'inline-block'
+    }
+  },
   button: {
+    display:'none',
     backgroundColor: 'transparent',
     color: 'red',
     marginLeft: 4,
