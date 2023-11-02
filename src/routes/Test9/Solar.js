@@ -55,7 +55,7 @@ const Solar = ({ num }) => {
       <div className={cssSun}>
         {planets.map((item, idx) => 
             <div
-              key={idx}
+              key={`${idx}-${num}`}
               className={cssPlanetContainer(item.speed, item.distance)}
             >
               <div className={cssPlanet(item.color)} />
