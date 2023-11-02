@@ -30,7 +30,6 @@ const Solar = ({ num }) => {
   }
 
   const getNewColor = (colors) => {
-    console.log('color', colors)
     while (true) {
       let color = `rgba(${getFloorValue(Math.random() * 255)}, ${getFloorValue(
         Math.random() * 255

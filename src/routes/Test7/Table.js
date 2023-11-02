@@ -5,9 +5,6 @@ const Table = ({filterFunc, init }) => {
   useEffect(()=>{
     init(query, setQuery)
   },[])
-  useEffect(()=>{
-    console.log('tesa')
-  }, [query])
   return (
     <table>
       <thead>
