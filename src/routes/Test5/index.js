@@ -1,4 +1,4 @@
-import {  createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { cssWrapper } from "./style";
 
 import Comp1 from "./Comp1";

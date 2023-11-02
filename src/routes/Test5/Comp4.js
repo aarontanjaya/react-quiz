@@ -19,7 +19,7 @@ const Comp4 = (/* NO PROPS ALLOWED */) => {
           id="mynumber2"
           type="number"
           placeholder="input mynumber2"
-          onChange={(e)=>setValue && setValue(e.target.value, MODAL)}
+          onChange={(e) => setValue && setValue(e.target.value, MODAL)}
         ></input>
       </div>
     </>

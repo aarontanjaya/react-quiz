@@ -64,7 +64,7 @@ const Player = () => {
         value={vidRef.current.currentTime}
         onInput={(e) => {
           vidRef.current.currentTime = e.target.value;
-          setTime(vidRef.current.currentTime)
+          setTime(vidRef.current.currentTime);
         }}
         max={vidRef.current.duration}
         min={0}

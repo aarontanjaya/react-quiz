@@ -7,12 +7,13 @@ import { CHILD, MODAL, PARENT } from ".";
 const Comp1 = ({ value, latest, onInput }) => {
   const [checked, setChecked] = useState(false);
   const [inputNumber, setInputNumber] = useState(0);
+
   const handleInputChange = (e) => {
     setInputNumber(e.target.value);
     onInput();
   };
 
-  const toggleCheck = () => {
+  const handleToggleCheck = () => {
     setChecked(!checked);
   };
 
@@ -46,7 +47,7 @@ const Comp1 = ({ value, latest, onInput }) => {
         <input
           id="overwrite"
           type="checkbox"
-          onChange={toggleCheck}
+          onChange={handleToggleCheck}
           value={checked}
         />
         {/* only show when overwrite is checked */}

@@ -4,11 +4,11 @@ import Label from "./Label";
 
 const Test2 = () => {
   const [value, setValue] = useState("")
-  const onClear = ()=>{
+  const handleClear = ()=>{
     setValue("")
   }
 
-  const onInputChange = (e)=>{
+  const handleInputChange = (e)=>{
     setValue(e.target.value)
   }
 
@@ -19,9 +19,9 @@ const Test2 = () => {
         <li>show "close button" only when hovered, and clear the input value when clicked.</li>
       </ul>
       <p>
-        <Label input={value} onClear={onClear}/>
+        <Label input={value} onClear={handleClear}/>
       </p>
-      <Input value={value} onChange={onInputChange}/>
+      <Input value={value} onChange={handleInputChange}/>
     </div>
   )
 }
