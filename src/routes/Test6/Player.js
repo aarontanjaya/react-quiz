@@ -61,7 +61,7 @@ const Player = () => {
         {muted ? "Unmute" : "Mute"}
       </button>
       <input
-        value={vidRef.current.currentTime}
+        value={vidRef.current.currentTime ? vidRef.current.currentTime : 0}
         onInput={(e) => {
           vidRef.current.currentTime = e.target.value;
           setTime(vidRef.current.currentTime);
