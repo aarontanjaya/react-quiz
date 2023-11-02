@@ -9,8 +9,8 @@ export const ModalContext = createContext({
   setShow: (val)=>{}
 })
 const Comp3 = (/* NO PROPS ALLOWED */) => {
-  const [ showModal, setShowModal ] = useState(true);
-  const value = useContext(AppContext)
+  const [ showModal, setShowModal ] = useState(false);
+  const {value} = useContext(AppContext)
   return(
     <ModalContext.Provider value={{show: showModal, setShow: setShowModal}}>
     <>

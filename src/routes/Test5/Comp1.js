@@ -1,8 +1,8 @@
 import { cssWrapper } from "./style";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comp2 from "./Comp2";
-import { CHILD } from ".";
+import { CHILD, MODAL, PARENT } from ".";
 
 const Comp1 = ({ value, latest, onInput }) => {
   const [checked, setChecked] = useState(false);
@@ -15,10 +15,30 @@ const Comp1 = ({ value, latest, onInput }) => {
   const toggleCheck = () => {
     setChecked(!checked);
   };
+
+  const getLatestOrigin = (origin) => {
+    switch (origin) {
+      case PARENT:
+        return "[Test5]";
+      case CHILD:
+        return "[Test5/Comp1]*"
+      case MODAL:
+        return "MODAL"
+      default:
+        return ""
+    }
+  };
+
+  useEffect(()=>{
+    if(latest === MODAL){
+      setInputNumber(value)
+    }
+  },[value, latest])
+
   return (
     <div className={cssWrapper}>
       Latest Inputted from{" "}
-      <code>{latest === CHILD ? "[Test5/Comp1]*" : "[Test5]"}</code>
+      <code>{getLatestOrigin(latest)}</code>
       <br />
       <br />
       <label htmlFor="overwrite">
@@ -31,6 +51,7 @@ const Comp1 = ({ value, latest, onInput }) => {
         />
         {/* only show when overwrite is checked */}
         <input
+          value={inputNumber}
           id="mynumber1"
           onChange={handleInputChange}
           type="number"

@@ -1,10 +1,11 @@
-import { useState, createContext } from "react";
+import {  createContext, useEffect, useState } from "react";
 import { cssWrapper } from "./style";
 
 import Comp1 from "./Comp1";
 import Comp3 from "./Comp3";
 export const PARENT = 0,
-  CHILD = 1;
+  CHILD = 1,
+  MODAL = 2;
 
 export const AppContext = createContext();
 const question = (
@@ -46,7 +47,7 @@ const question = (
 );
 
 const Test5 = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState();
   const [latest, setLatest] = useState(PARENT);
   const handleDecrement = () => {
     setValue(value - 1);
@@ -77,13 +78,22 @@ const Test5 = () => {
   };
 
   return (
-    <AppContext.Provider value={value}>
+    <AppContext.Provider
+      value={{
+        value: value,
+        setValue: (val, origin) => {
+          setValue(val);
+          setLatest(origin);
+        },
+      }}
+    >
       <div>
         {question}
         <button onClick={() => handleDecrement()} id="numbermin" type="button">
           -
         </button>
         <input
+          value={value}
           onChange={handleInputChange}
           id="mynumber"
           type="number"
